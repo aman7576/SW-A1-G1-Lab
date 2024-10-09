@@ -1,0 +1,5 @@
+---
+triple:          'arm64-apple-darwin'
+binary-path:     '/Users/anubhavmishra/Documents/DS Lab G1/SW-A1-G1-Lab/reverseArray'
+relocations:     []
+...
