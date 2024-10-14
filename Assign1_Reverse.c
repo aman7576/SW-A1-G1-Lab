@@ -3,10 +3,19 @@
 int reverse(int arr[], int n);
 void printArr(int arr[], int n);
 
+
 int main(){
-    int arr[]={1,2,3,4,5,6,7};
-    reverse(arr,7);
-    printArr(arr,7);
+    int n;
+    printf("enter the length of array : ");
+    scanf("%d",&n);
+    int arr[n];
+    for(int i=0;i<n;i++){
+        int num;
+        scanf("%d",&num);
+        arr[i]=num;
+    }
+    reverse(arr,n);
+    printArr(arr,n);
     
     return 0;
 }
