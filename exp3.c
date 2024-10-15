@@ -1,5 +1,5 @@
-#include <stdio.h>
 #include <stdlib.h>
+#include <stdin.h>
 #include <string.h>
 
 char* merge(char* str1, char* str2) {
@@ -24,17 +24,16 @@ char* substring(char* str, char* substr, char* new_substr) {
     char* pos;
 
     if (!(pos = strstr(str, substr))) {
-        return str; // Substring not found
+        return str; 
     }
 
-    // Copy part before the substring
     strncpy(buffer, str, pos - str);
     buffer[pos - str] = '\0';
 
-    // Add the replacement substring
+    
     strcat(buffer, new_substr);
 
-    // Add the rest of the original string
+
     strcat(buffer, pos + strlen(substr));
 
     strcpy(str, buffer);
@@ -54,13 +53,13 @@ int main() {
 
         int a;
         scanf("%d", &a);
-        getchar(); // Consume the newline character left by scanf
+        getchar(); 
         printf("\n");
 
         if (a == 1) {
             printf("Enter String-1: ");
             fgets(str1, sizeof(str1), stdin);
-            str1[strcspn(str1, "\n")] = 0; // Remove newline
+            str1[strcspn(str1, "\n")] = 0; 
 
             printf("Enter String-2: ");
             fgets(str2, sizeof(str2), stdin);
