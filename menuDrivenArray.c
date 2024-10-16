@@ -1,12 +1,10 @@
 #include <stdio.h>
-
 void enterElement(int arr[], int n) {
     for (int i = 0; i < n; i++) {
         printf("Enter the element %d: ", i);
         scanf("%d", &arr[i]);
     }
 }
-
 void deleteElement(int arr[], int *n) {
     int pos;
     printf("Enter the position of the element you want to delete: ");
@@ -22,7 +20,6 @@ void deleteElement(int arr[], int *n) {
     }
     (*n)--; 
 }
-
 int findMax(int arr[], int n) {
     int max = arr[0];
     for (int i = 1; i < n; i++) {
@@ -32,14 +29,12 @@ int findMax(int arr[], int n) {
     }
     return max;
 }
-
 void printArray(int arr[], int n) {
     for (int i = 0; i < n; i++) {
         printf("%d ", arr[i]);
     }
     printf("\n");
 }
-
 int main() {
     int flag = 0;
     int size;

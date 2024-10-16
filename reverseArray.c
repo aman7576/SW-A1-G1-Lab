@@ -10,17 +10,23 @@ void reverseArray(int arr[],int n){
         left++;
         right--;
     }
-  
 }
 void printArray(int arr[],int n){
   for(int i=0;i<n;i++){
     printf("%d ",arr[i]);
   }
 }
-
 int main(){
-  int arr[]={1,2,3,4,5,6};
-  int n=sizeof(arr)/sizeof(int);
+  int n;
+  printf("How many elements : \t");
+  scanf("%d",&n);
+  int arr[n];
+  for(int i=0; i<n; i++){
+    int temp;
+    printf("Enter the element :\t");
+    scanf("%d",&temp);
+    arr[i]=temp;
+    }
   reverseArray(arr,n);
   printArray(arr,n);
 }
