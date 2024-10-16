@@ -117,11 +117,10 @@ int main(void) {
                 break;
         }
 
-        // Fix: Add a space before %c to consume the newline left by previous input
         printf("\n\nContinue? (Y/N): ");
-        scanf(" %c", &y);  // Notice the space before %c
+        scanf(" %c", &y);  
 
-    } while (y == 'Y' || y == 'y');  // Allow 'y' as well for case-insensitivity
+    } while (y == 'Y' || y == 'y');
 
     return 0;
 }
