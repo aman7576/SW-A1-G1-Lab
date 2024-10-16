@@ -16,7 +16,7 @@ void insert(int data) {
         printf("Queue Overflow! Cannot insert.\n");
         return;
     } else {
-        if (front == -1) { // Queue is empty
+        if (front == -1) { 
             front = 0;
         }
         rear = (rear + 1) % MAX;
@@ -31,7 +31,7 @@ void delete() {
     } else {
         printf("Deleted %d from the queue.\n", queue[front]);
         if (front == rear) {
-            // Queue has only one element
+
             front = rear = -1;
         } else {
             front = (front + 1) % MAX;
@@ -59,7 +59,7 @@ void removeDuplicates() {
         return;
     }
 
-    int temp[MAX]; // Temporary array to hold unique elements
+    int temp[MAX]; 
     int tempIndex = 0;
     int i = front;
 
