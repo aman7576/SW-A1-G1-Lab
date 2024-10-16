@@ -1,5 +1,5 @@
 #include <stdlib.h>
-#include <stdin.h>
+#include <stdio.h>
 #include <string.h>
 
 char* merge(char* str1, char* str2) {
@@ -63,7 +63,7 @@ int main() {
 
             printf("Enter String-2: ");
             fgets(str2, sizeof(str2), stdin);
-            str2[strcspn(str2, "\n")] = 0; // Remove newline
+            str2[strcspn(str2, "\n")] = 0; 
 
             char* result = merge(str1, str2);
             printf("The merged string: %s\n", result);
@@ -71,20 +71,20 @@ int main() {
         } else if (a == 2) {
             printf("Enter string to be reversed: ");
             fgets(str3, sizeof(str3), stdin);
-            str3[strcspn(str3, "\n")] = 0; // Remove newline
+            str3[strcspn(str3, "\n")] = 0; 
             printf("Reversed string: %s\n", reverse(str3));
         } else if (a == 3) {
             printf("Enter the main string: ");
             fgets(str1, sizeof(str1), stdin);
-            str1[strcspn(str1, "\n")] = 0; // Remove newline
+            str1[strcspn(str1, "\n")] = 0; 
 
             printf("Enter the substring to find: ");
             fgets(str2, sizeof(str2), stdin);
-            str2[strcspn(str2, "\n")] = 0; // Remove newline
+            str2[strcspn(str2, "\n")] = 0; 
 
             printf("Enter the replacement string: ");
             fgets(str3, sizeof(str3), stdin);
-            str3[strcspn(str3, "\n")] = 0; // Remove newline
+            str3[strcspn(str3, "\n")] = 0; 
 
             printf("The new string: %s\n", substring(str1, str2, str3));
         } else {
