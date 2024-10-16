@@ -1,89 +1,75 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <stdbool.h>
-#include <string.h>
-
-#define MAX 100
 
 typedef struct {
-    char arr[MAX];
+    char *arr;
+    int max;
     int top;
 } Stack;
 
-void initialize(Stack *s) {
+void initializeStack(Stack *s, int size) {
+    s->max = size;
     s->top = -1;
+    s->arr = (char *)malloc(sizeof(char) * s->max);
+}
+
+void push(Stack *s, char ch) {
+    if (s->top == s->max - 1) {
+        printf("Stack Overflow\n");
+    } else {
+        s->arr[++(s->top)] = ch;
+    }
+}
+
+void pop(Stack *s) {
+    if (s->top == -1) {
+        printf("Stack Underflow\n");
+    } else {
+        s->top--;
+    }
+}
+
+char peek(Stack *s) {
+    return s->arr[s->top];
 }
 
 bool isEmpty(Stack *s) {
     return s->top == -1;
 }
 
-bool isFull(Stack *s) {
-    return s->top == MAX - 1;
-}
-
-void push(Stack *s, char c) {
-    if (isFull(s)) {
-        printf("Stack overflow! Cannot push '%c'.\n", c);
-    } else {
-        s->arr[++(s->top)] = c;
-    }
-}
-
-char pop(Stack *s) {
-    if (isEmpty(s)) {
-        printf("Stack underflow! Cannot pop.\n");
-        return '\0';
-    } else {
-        return s->arr[(s->top)--];
-    }
-}
-
-bool isOpeningParenthesis(char c) {
-    return c == '(' || c == '{' || c == '[';
-}
-
-bool isClosingParenthesis(char c) {
-    return c == ')' || c == '}' || c == ']';
-}
-
-bool isMatchingPair(char opening, char closing) {
-    return (opening == '(' && closing == ')') ||
-           (opening == '{' && closing == '}') ||
-           (opening == '[' && closing == ']');
-}
-
-bool checkParentheses(char *expression) {
+int main() {
     Stack s;
-    initialize(&s);
-    
-    for (int i = 0; i < strlen(expression); i++) {
-        if (isOpeningParenthesis(expression[i])) {
-            push(&s, expression[i]);
-        } else if (isClosingParenthesis(expression[i])) {
-            if (isEmpty(&s)) {
-                return false;  // No matching opening parenthesis
-            }
-            char topChar = pop(&s);
-            if (!isMatchingPair(topChar, expression[i])) {
-                return false;  // Mismatched pair
+    int length;
+
+    printf("Enter the length of the string: ");
+    scanf("%d", &length);
+
+    initializeStack(&s, length);
+    char str[length + 1]; // Adding 1 for the null terminator
+
+    printf("Enter the string: ");
+    scanf("%s", str);
+
+    for (int i = 0; i < length; i++) {
+        if (str[i] == '(') {
+            push(&s, str[i]);
+        } else if (str[i] == ')') {
+            if (!isEmpty(&s) && peek(&s) == '(') {
+                pop(&s);
+            } else {
+                push(&s, str[i]);
             }
         }
     }
-    return isEmpty(&s);  // Stack should be empty if balanced
-}
 
-// Main function
-int main() {
-    char expression[MAX];
-    printf("Enter an expression to check for balanced parentheses: ");
-    fgets(expression, MAX, stdin);
-    expression[strcspn(expression, "\n")] = '\0';  // Remove newline character
-
-    if (checkParentheses(expression)) {
-        printf("The parentheses are balanced.\n");
+    if (isEmpty(&s)) {
+        printf("Valid String\n");
     } else {
-        printf("The parentheses are not balanced.\n");
+        printf("Invalid String\n");
     }
+
+    free(s.arr); // Free the dynamically allocated memory
 
     return 0;
 }
