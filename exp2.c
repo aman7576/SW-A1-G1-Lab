@@ -23,8 +23,8 @@ void enterElements(int arr[], int *size) {
     }
 
     for (int i = 0; i < n; i++) {
-        printf("Element %d: ", *size + 1);
-        scanf("%d", &arr[(*size)++]);
+        printf("Element %d: ", *size + 1); // Updated to show correct element number
+        scanf("%d", &arr[(*size)++]); // Incrementing size after adding the element
     }
 }
 
@@ -35,7 +35,7 @@ void deleteElement(int arr[], int *size) {
         return;
     }
 
-    printf("Enter index to delete: ");
+    printf("Enter index to delete (0-%d): ", *size - 1); // Clarified range
     scanf("%d", &index);
 
     if (index < 0 || index >= *size) {
@@ -44,9 +44,9 @@ void deleteElement(int arr[], int *size) {
     }
 
     for (int i = index; i < *size - 1; i++) {
-        arr[i] = arr[i + 1];
+        arr[i] = arr[i + 1]; // Shift elements to the left
     }
-    (*size)--;
+    (*size)--; // Reduce the size after deletion
     printf("Element at index %d deleted.\n", index);
 }
 
@@ -108,6 +108,6 @@ int main() {
                 return 0;
             default: 
                 printf("Invalid choice. Please select a number between 1 and 5.\n");
-            
         }
-    };
+    }
+}
