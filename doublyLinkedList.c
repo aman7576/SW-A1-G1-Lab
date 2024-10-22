@@ -47,6 +47,10 @@ void deleteNode(struct Node** head, int key) {
 
 void displayList(struct Node* head) {
     struct Node* temp = head;
+    if (head == NULL) {
+        printf("List is empty.\n");
+        return;
+    }
     while (temp != NULL) {
         printf("%d ", temp->data);
         temp = temp->next;
@@ -56,11 +60,36 @@ void displayList(struct Node* head) {
 
 int main() {
     struct Node* head = NULL;
-    insertAtEnd(&head, 10);
-    insertAtEnd(&head, 20);
-    insertAtEnd(&head, 30);
-    displayList(head);
-    deleteNode(&head, 20);
-    displayList(head);
+    int choice, value;
+
+    while (1) {
+        printf("\nMenu:\n");
+        printf("1. Insert at End\n");
+        printf("2. Delete Element\n");
+        printf("3. Display List\n");
+        printf("4. Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+
+        switch (choice) {
+            case 1:
+                printf("Enter value to insert: ");
+                scanf("%d", &value);
+                insertAtEnd(&head, value);
+                break;
+            case 2:
+                printf("Enter value to delete: ");
+                scanf("%d", &value);
+                deleteNode(&head, value);
+                break;
+            case 3:
+                displayList(head);
+                break;
+            case 4:
+                exit(0);
+            default:
+                printf("Invalid choice. Please try again.\n");
+        }
+    }
     return 0;
 }
